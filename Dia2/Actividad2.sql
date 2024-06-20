@@ -72,15 +72,72 @@ select distinct nombre,apellido1 as Primer_Apellido, id_departamento
 from empleado;
 
 -- el nombre y apellidos de los empleados en una única columna.
-select empleado
-from(
-	select nombre
-    from empleado
-    union
-    select apellido1 as Primer_Apellido
-    from empleado
-) empleado
-order by nombre;
+delimiter //
+create function Nombre_Apellidos(nombre varchar(100),apellido1 varchar(100), apellido2 varchar(100))
+returns varchar(255) deterministic
+begin
+    if apellido2 is null then
+        return CONCAT(nombre," ",apellido1);
+    else
+        return CONCAT(nombre," ",apellido1," ",apellido2);
+    end if;
+end//
+delimiter ;
+select Nombre_Apellidos(nombre,apellido1,apellido2) as Empleados
+from empleado;
+
+-- nombre y apellidos en una única columna, convirtiendo todos los caracteres en mayúscula.
+delimiter //
+create function Nombre_Apellidos_Mayuscula(nombre varchar(100),apellido1 varchar(100), apellido2 varchar(100))
+returns varchar(255) deterministic
+begin
+    if apellido2 is null then
+        return upper(CONCAT(nombre," ",apellido1));
+    else
+        return upper(CONCAT(nombre," ",apellido1," ",apellido2));
+    end if;
+end//
+delimiter ;
+select Nombre_Apellidos_Mayuscula(nombre,apellido1,apellido2) as Empleados
+from empleado;
+
+-- nombre y apellidos en una única columna, convirtiendo todos los caracteres en minúscula.
+delimiter //
+create function Nombre_Apellidos_Minuscula(nombre varchar(100),apellido1 varchar(100), apellido2 varchar(100))
+returns varchar(255) deterministic
+begin
+    if apellido2 is null then
+        return lower(CONCAT(nombre," ",apellido1));
+    else
+        return lower(CONCAT(nombre," ",apellido1," ",apellido2));
+    end if;
+end//
+delimiter ;
+select Nombre_Apellidos_Minuscula(nombre,apellido1,apellido2) as Empleados
+from empleado;
+
+-- identificador de los empleados junto al nif, pero el nif deberá aparecer en dos columnas,
+-- una mostrará únicamente los dígitos del nif y la otra la letra.
+
+
+
+-- nombre de cada departamento y el presupuesto actual del que dispone. Para calcular
+-- este dato tendrá que restar al valor del presupuesto inicial (columna presupuesto)
+-- los gastos que se han generado(columna gastos). Tenga en cuenta que en algunos casos 
+-- pueden existir valores negativos. Utilice un alias apropiado para la nueva columna que 
+-- está calculando.
+delimiter //
+create function calcula_presupuesto(presupuesto DOUBLE,gastos DOUBLE)
+returns DOUBLE deterministic
+begin
+	declare total double;
+    return total = presupuesto - gastos;
+end//
+delimiter ;
+select nombre, calcula_presupuesto(presupuesto,gastos)
+from departamento;
+
+
 
 
 -- Desarrollado por Catalina Mulford / ID 1.097.490.150
