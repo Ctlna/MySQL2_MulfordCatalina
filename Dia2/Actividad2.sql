@@ -118,7 +118,16 @@ from empleado;
 
 -- identificador de los empleados junto al nif, pero el nif deberá aparecer en dos columnas,
 -- una mostrará únicamente los dígitos del nif y la otra la letra.
-
+delimiter //
+create procedure separa_nif()
+begin
+     select id,
+          left(nif,length(nif)-1) as Numeros
+          right(nif,1) as Letras
+     from empleado;
+end //
+delimiter ;
+call separa_nif();
 
 
 -- nombre de cada departamento y el presupuesto actual del que dispone. Para calcular
@@ -130,12 +139,34 @@ delimiter //
 create function calcula_presupuesto(presupuesto DOUBLE,gastos DOUBLE)
 returns DOUBLE deterministic
 begin
-	declare total double;
-    return total = presupuesto - gastos;
+	 return presupuesto - gastos;
 end//
 delimiter ;
-select nombre, calcula_presupuesto(presupuesto,gastos)
+select nombre, calcula_presupuesto(presupuesto,gastos) as Total
 from departamento;
+
+-- nombre de los departamentos y el valor del presupuesto actual ordenado de forma ascendente.
+delimiter //
+create function calcula_presupuesto(presupuesto DOUBLE,gastos DOUBLE)
+returns DOUBLE deterministic
+begin
+	declare total double;
+        return presupuesto - gastos;
+end//
+delimiter ;
+select nombre, calcula_presupuesto(presupuesto,gastos) as Total
+from departamento
+order by Total asc;
+
+-- nombre de todos los departamentos ordenados de forma ascendente.
+select nombre
+from departamento
+order by Total asc;
+
+-- nombre de todos los departamentos ordenados de forma descendente.
+select nombre
+from departamento
+order by Total desc;
 
 
 
