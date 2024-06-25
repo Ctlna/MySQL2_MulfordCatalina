@@ -72,6 +72,10 @@ create table alquiler(
     foreign key(idCliente) references cliente (id)
 );
 
+insert into cliente(id, cedula, nombre, apellido, celular, ciudad_residencia, correo, direccion) VALUES (1,2454,'Pepa','Pig',3478,'Lima','PepaOink@gmail.com','Disney');
+insert into vehiculo(id,tipo,referencia,modelo,placa,capacidad,sunroof,puertas,color,motor) values (1,'Ban',8,2021-10-22,'9911',15,'Si',7,'Morado','Fuerte');
+insert into alquiler(id,idSucursal_salida,idSucursal_llegada,idEmpleado,idVehiculo,idCliente,valor_semana,valor_dia,fecha_salida,esperada_llegada,fecha_llegada,valor_cotizado,descuento,valor_pagado) values (1,1,2,3,1,1,6556,323,2022-06-02,2022-07-01,2022-06-20,822,23,8500);
+
 INSERT INTO sucursal (id, direccion, celular, correo, telefono, ciudad) VALUES 
 (1, 'Av. La Marina 123', 987654321, 'AutoRental.lima@AR.com', 123456789, 'Lima'),
 (2, 'Jr. Huallaga 456', 912345678, 'AutoRental.lima@AR.com', 234567890, 'Lima'),
