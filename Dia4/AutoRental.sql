@@ -72,9 +72,108 @@ create table alquiler(
     foreign key(idCliente) references cliente (id)
 );
 
-insert into cliente(id, cedula, nombre, apellido, celular, ciudad_residencia, correo, direccion) VALUES (1,2454,'Pepa','Pig',3478,'Lima','PepaOink@gmail.com','Disney');
-insert into vehiculo(id,tipo,referencia,modelo,placa,capacidad,sunroof,puertas,color,motor) values (1,'Ban',8,2021-10-22,'9911',15,'Si',7,'Morado','Fuerte');
-insert into alquiler(id,idSucursal_salida,idSucursal_llegada,idEmpleado,idVehiculo,idCliente,valor_semana,valor_dia,fecha_salida,esperada_llegada,fecha_llegada,valor_cotizado,descuento,valor_pagado) values (1,1,2,3,1,1,6556,323,2022-06-02,2022-07-01,2022-06-20,822,23,8500);
+INSERT INTO cliente(id, cedula, nombre, apellido, celular, ciudad_residencia, correo, direccion) VALUES
+(1, 845321567, 'Juan', 'Perez', 3101234567, 'Lima', 'juan.perez@gmail.com', 'Av. La Marina 123'),
+(2, 764213895, 'Maria', 'Lopez', 3202345678, 'Arequipa', 'maria.lopez@gmail.com', 'Jr. Huallaga 456'),
+(3, 982154637, 'Carlos', 'Gomez', 3303456789, 'Trujillo', 'carlos.gomez@gmail.com', 'Calle San Martin 789'),
+(4, 345678923, 'Ana', 'Fernandez', 3104567890, 'Lima', 'ana.fernandez@gmail.com', 'Av. Grau 234'),
+(5, 123456789, 'Luis', 'Martinez', 3205678901, 'Arequipa', 'luis.martinez@gmail.com', 'Jr. Arequipa 567'),
+(6, 987654321, 'Elena', 'Garcia', 3306789012, 'Trujillo', 'elena.garcia@gmail.com', 'Av. Ejercito 890'),
+(7, 741852963, 'Miguel', 'Rodriguez', 3107890123, 'Lima', 'miguel.rodriguez@gmail.com', 'Calle Lima 112'),
+(8, 963258741, 'Sofia', 'Hernandez', 3208901234, 'Arequipa', 'sofia.hernandez@gmail.com', 'Jr. Tacna 345'),
+(9, 159753486, 'Jose', 'Ruiz', 3309012345, 'Trujillo', 'jose.ruiz@gmail.com', 'Av. Peru 678'),
+(10, 951753258, 'Carmen', 'Diaz', 3101231234, 'Lima', 'carmen.diaz@gmail.com', 'Calle Pizarro 901'),
+(11, 864213789, 'Pedro', 'Morales', 3202342345, 'Arequipa', 'pedro.morales@gmail.com', 'Jr. Almagro 234'),
+(12, 852369741, 'Lucia', 'Jimenez', 3303453456, 'Trujillo', 'lucia.jimenez@gmail.com', 'Av. Huamachuco 567'),
+(13, 784512369, 'Ricardo', 'Sanchez', 3104564567, 'Lima', 'ricardo.sanchez@gmail.com', 'Av. Lima 123'),
+(14, 741369852, 'Paula', 'Castillo', 3205675678, 'Arequipa', 'paula.castillo@gmail.com', 'Jr. Cuzco 456'),
+(15, 963741258, 'Javier', 'Romero', 3306786789, 'Trujillo', 'javier.romero@gmail.com', 'Calle Junin 789'),
+(16, 852147963, 'Rosa', 'Torres', 3107897890, 'Lima', 'rosa.torres@gmail.com', 'Av. Arequipa 234'),
+(17, 123789456, 'Gabriel', 'Vargas', 3208908901, 'Arequipa', 'gabriel.vargas@gmail.com', 'Jr. Grau 567'),
+(18, 951456123, 'Andrea', 'Ramos', 3309019012, 'Trujillo', 'andrea.ramos@gmail.com', 'Calle Puno 890'),
+(19, 874125369, 'Manuel', 'Flores', 3101230123, 'Lima', 'manuel.flores@gmail.com', 'Av. Huancayo 112'),
+(20, 412369875, 'Angela', 'Ortega', 3202341234, 'Arequipa', 'angela.ortega@gmail.com', 'Jr. Cajamarca 345'),
+(21, 654789321, 'David', 'Mendoza', 3303452345, 'Trujillo', 'david.mendoza@gmail.com', 'Av. Trujillo 678'),
+(22, 789654123, 'Isabel', 'Vega', 3104563456, 'Lima', 'isabel.vega@gmail.com', 'Calle Ica 901'),
+(23, 147258369, 'Francisco', 'Guerrero', 3205674567, 'Arequipa', 'francisco.guerrero@gmail.com', 'Jr. Lima 234'),
+(24, 258369147, 'Sara', 'Navarro', 3306785678, 'Trujillo', 'sara.navarro@gmail.com', 'Av. Chimbote 567'),
+(25, 369147258, 'Alberto', 'Rivas', 3107896789, 'Lima', 'alberto.rivas@gmail.com', 'Jr. Arequipa 789'),
+(26, 741258963, 'Daniela', 'Mora', 3208907890, 'Arequipa', 'daniela.mora@gmail.com', 'Av. Grau 123'),
+(27, 852963741, 'Roberto', 'Cabrera', 3309018901, 'Trujillo', 'roberto.cabrera@gmail.com', 'Calle San Martin 456'),
+(28, 159486753, 'Monica', 'Suarez', 3101239012, 'Lima', 'monica.suarez@gmail.com', 'Jr. Huallaga 789'),
+(29, 147963852, 'Felipe', 'Mejia', 3202340123, 'Arequipa', 'felipe.mejia@gmail.com', 'Av. La Marina 234'),
+(30, 951753486, 'Claudia', 'Salazar', 3303451234, 'Trujillo', 'claudia.salazar@gmail.com', 'Calle Tacna 567'),
+(31, 784512963, 'Rodrigo', 'Padilla', 3104562345, 'Lima', 'rodrigo.padilla@gmail.com', 'Jr. Arequipa 890'),
+(32, 369258147, 'Beatriz', 'Espinoza', 3205673456, 'Arequipa', 'beatriz.espinoza@gmail.com', 'Av. Ejercito 112'),
+(33, 456789321, 'Oscar', 'Paredes', 3306784567, 'Trujillo', 'oscar.paredes@gmail.com', 'Jr. Almagro 345'),
+(34, 951624789, 'Patricia', 'Leon', 3107895678, 'Lima', 'patricia.leon@gmail.com', 'Av. Peru 678'),
+(35, 147369852, 'Eduardo', 'Muñoz', 3208906789, 'Arequipa', 'eduardo.munoz@gmail.com', 'Calle Pizarro 901'),
+(36, 258147963, 'Teresa', 'Maldonado', 3309017890, 'Trujillo', 'teresa.maldonado@gmail.com', 'Jr. Huamachuco 234'),
+(37, 369852147, 'Fernando', 'Rojas', 3101238901, 'Lima', 'fernando.rojas@gmail.com', 'Av. Lima 345'),
+(38, 852147963, 'Lorena', 'Carrillo', 3202349012, 'Arequipa', 'lorena.carrillo@gmail.com', 'Jr. Cuzco 678'),
+(39, 951357486, 'Ignacio', 'Delgado', 3303450123, 'Trujillo', 'ignacio.delgado@gmail.com', 'Calle Junin 901'),
+(40, 753486159, 'Susana', 'Cruz', 3104561234, 'Lima', 'susana.cruz@gmail.com', 'Av. Arequipa 234'),
+(41, 159753624, 'Hugo', 'Chavez', 3205672345, 'Arequipa', 'hugo.chavez@gmail.com', 'Jr. Grau 567'),
+(42, 753159486, 'Nancy', 'Castro', 3306783456, 'Trujillo', 'nancy.castro@gmail.com', 'Calle Puno 890'),
+(43, 951486753, 'Victor', 'Bravo', 3107894567, 'Lima', 'victor.bravo@gmail.com', 'Av. Huancayo 112'),
+(44, 357159852, 'Gloria', 'Ramirez', 3208905678, 'Arequipa', 'gloria.ramirez@gmail.com', 'Jr. Cajamarca 345'),
+(45, 852963159, 'Diego', 'Peña', 3309016789, 'Trujillo', 'diego.pena@gmail.com', 'Av. Trujillo 678'),
+(46, 951258147, 'Marta', 'Ortiz', 3101237890, 'Lima', 'marta.ortiz@gmail.com', 'Calle Ica 901'),
+(47, 159486357, 'Sebastian', 'Nieto', 3202348901, 'Arequipa', 'sebastian.nieto@gmail.com', 'Jr. Lima 234'),
+(48, 741963258, 'Raquel', 'Fuentes', 3303459012, 'Trujillo', 'raquel.fuentes@gmail.com', 'Av. Chimbote 567'),
+(49, 357951486, 'Alonso', 'Campos', 3104560123, 'Lima', 'alonso.campos@gmail.com', 'Jr. Arequipa 789'),
+(50, 963258147, 'Sandra', 'Santana', 3205670123, 'Arequipa', 'sandra.santana@gmail.com', 'Av. Grau 123'),
+(51, 258159357, 'Elias', 'Silva', 3306781234, 'Trujillo', 'elias.silva@gmail.com', 'Calle San Martin 456'),
+(52, 159852753, 'Diana', 'Romero', 3107892345, 'Lima', 'diana.romero@gmail.com', 'Jr. Huallaga 789'),
+(53, 258963147, 'Jorge', 'Pacheco', 3208903456, 'Arequipa', 'jorge.pacheco@gmail.com', 'Av. La Marina 234'),
+(54, 147951963, 'Silvia', 'Herrera', 3309014567, 'Trujillo', 'silvia.herrera@gmail.com', 'Calle Tacna 567'),
+(55, 357159486, 'Hernan', 'Montoya', 3101235678, 'Lima', 'hernan.montoya@gmail.com', 'Jr. Arequipa 890'),
+(56, 951753258, 'Cecilia', 'Arroyo', 3202346789, 'Arequipa', 'cecilia.arroyo@gmail.com', 'Av. Ejercito 112'),
+(57, 753486951, 'Enrique', 'Vargas', 3303457890, 'Trujillo', 'enrique.vargas@gmail.com', 'Jr. Almagro 345'),
+(58, 159357852, 'Lorena', 'Martinez', 3104568901, 'Lima', 'lorena.martinez@gmail.com', 'Av. Peru 678'),
+(59, 852147951, 'Fabian', 'Reyes', 3205679012, 'Arequipa', 'fabian.reyes@gmail.com', 'Calle Pizarro 901'),
+(60, 963258753, 'Valeria', 'Gutierrez', 3306780123, 'Trujillo', 'valeria.gutierrez@gmail.com', 'Jr. Huamachuco 234'),
+(61, 741258369, 'Nelson', 'Cruz', 3107891234, 'Lima', 'nelson.cruz@gmail.com', 'Av. Lima 345'),
+(62, 258147852, 'Julia', 'Soto', 3208902345, 'Arequipa', 'julia.soto@gmail.com', 'Jr. Cuzco 678'),
+(63, 753951486, 'Mauricio', 'Pena', 3309013456, 'Trujillo', 'mauricio.pena@gmail.com', 'Calle Junin 901'),
+(64, 159486753, 'Angela', 'Velasco', 3101233456, 'Lima', 'angela.velasco@gmail.com', 'Av. Arequipa 234'),
+(65, 147258963, 'Esteban', 'Escobar', 3202344567, 'Arequipa', 'esteban.escobar@gmail.com', 'Jr. Grau 567'),
+(66, 963258159, 'Adriana', 'Ortega', 3303455678, 'Trujillo', 'adriana.ortega@gmail.com', 'Calle Puno 890'),
+(67, 741963159, 'Armando', 'Salas', 3104566789, 'Lima', 'armando.salas@gmail.com', 'Av. Huancayo 112'),
+(68, 258369147, 'Cristina', 'Marquez', 3205677890, 'Arequipa', 'cristina.marquez@gmail.com', 'Jr. Cajamarca 345'),
+(69, 159753852, 'Gustavo', 'Navarro', 3306788901, 'Trujillo', 'gustavo.navarro@gmail.com', 'Av. Trujillo 678'),
+(70, 753951258, 'Raul', 'Benitez', 3107899012, 'Lima', 'raul.benitez@gmail.com', 'Calle Ica 901'),
+(71, 159357486, 'Isabel', 'Solano', 3208900123, 'Arequipa', 'isabel.solano@gmail.com', 'Jr. Lima 234'),
+(72, 258147963, 'Antonio', 'Bermudez', 3309011234, 'Trujillo', 'antonio.bermudez@gmail.com', 'Av. Chimbote 567'),
+(73, 963147258, 'Ruth', 'Serrano', 3101232345, 'Lima', 'ruth.serrano@gmail.com', 'Jr. Arequipa 789'),
+(74, 258159753, 'Luz', 'Aguirre', 3202343456, 'Arequipa', 'luz.aguirre@gmail.com', 'Av. Grau 123'),
+(75, 741258159, 'Andres', 'Pizarro', 3303454567, 'Trujillo', 'andres.pizarro@gmail.com', 'Calle San Martin 456'),
+(76, 159753486, 'Maria', 'Salinas', 3104565678, 'Lima', 'maria.salinas@gmail.com', 'Jr. Huallaga 789'),
+(77, 753486951, 'Mario', 'Blanco', 3205676789, 'Arequipa', 'mario.blanco@gmail.com', 'Av. La Marina 234'),
+(78, 852369147, 'Rocio', 'Lopez', 3306787890, 'Trujillo', 'rocio.lopez@gmail.com', 'Calle Tacna 567'),
+(79, 159486357, 'Gerardo', 'Avila', 3107898901, 'Lima', 'gerardo.avila@gmail.com', 'Jr. Arequipa 890'),
+(80, 741258963, 'Elisa', 'Fernandez', 3208909012, 'Arequipa', 'elisa.fernandez@gmail.com', 'Av. Ejercito 112'),
+(81, 963258147, 'Nicolas', 'Palacios', 3309010123, 'Trujillo', 'nicolas.palacios@gmail.com', 'Jr. Almagro 345'),
+(82, 258963753, 'Liliana', 'Nieves', 3101231234, 'Lima', 'liliana.nieves@gmail.com', 'Av. Peru 678'),
+(83, 147852963, 'Roberto', 'Villegas', 3202342345, 'Arequipa', 'roberto.villegas@gmail.com', 'Calle Pizarro 901'),
+(84, 741963852, 'Monica', 'Campos', 3303453456, 'Trujillo', 'monica.campos@gmail.com', 'Jr. Huamachuco 234'),
+(85, 159357486, 'Francisco', 'Mendez', 3104564567, 'Lima', 'francisco.mendez@gmail.com', 'Av. Lima 345'),
+(86, 741258147, 'Laura', 'Iglesias', 3205675678, 'Arequipa', 'laura.iglesias@gmail.com', 'Jr. Cuzco 678'),
+(87, 852369753, 'Victor', 'Quintero', 3306786789, 'Trujillo', 'victor.quintero@gmail.com', 'Calle Junin 901'),
+(88, 159486852, 'Estefania', 'Marin', 3107897890, 'Lima', 'estefania.marin@gmail.com', 'Av. Arequipa 234'),
+(89, 963147258, 'Julian', 'Lozano', 3208908901, 'Arequipa', 'julian.lozano@gmail.com', 'Jr. Grau 567'),
+(90, 258369159, 'Magdalena', 'Ayala', 3309019012, 'Trujillo', 'magdalena.ayala@gmail.com', 'Calle Puno 890'),
+(91, 159753486, 'Ignacio', 'Carrillo', 3101230123, 'Lima', 'ignacio.carrillo@gmail.com', 'Av. Huancayo 112'),
+(92, 741258963, 'Elena', 'Luna', 3202341234, 'Arequipa', 'elena.luna@gmail.com', 'Jr. Cajamarca 345'),
+(93, 852369741, 'Fabio', 'Bustos', 3303452345, 'Trujillo', 'fabio.bustos@gmail.com', 'Av. Trujillo 678'),
+(94, 963258147, 'Daniela', 'Ferrer', 3104563456, 'Lima', 'daniela.ferrer@gmail.com', 'Calle Ica 901'),
+(95, 147258369, 'Diego', 'Palma', 3205674567, 'Arequipa', 'diego.palma@gmail.com', 'Jr. Lima 234'),
+(96, 258369147, 'Valentina', 'Gallardo', 3306785678, 'Trujillo', 'valentina.gallardo@gmail.com', 'Av. Chimbote 567'),
+(97, 369147258, 'Pedro', 'Ortega', 3107896789, 'Lima', 'pedro.ortega@gmail.com', 'Jr. Arequipa 789'),
+(98, 741258963, 'Sofia', 'Franco', 3208907890, 'Arequipa', 'sofia.franco@gmail.com', 'Av. Grau 123'),
+(99, 852963741, 'Jorge', 'Cardenas', 3309018901, 'Trujillo', 'jorge.cardenas@gmail.com', 'Calle San Martin 456'),
+(100, 369258147, 'Camila', 'Perez', 3101239012, 'Lima', 'camila.perez@gmail.com', 'Jr. Huallaga 789');
+
 
 INSERT INTO sucursal (id, direccion, celular, correo, telefono, ciudad) VALUES 
 (1, 'Av. La Marina 123', 987654321, 'AutoRental.lima@AR.com', 123456789, 'Lima'),
@@ -178,8 +277,8 @@ INSERT INTO sucursal (id, direccion, celular, correo, telefono, ciudad) VALUES
 (99, 'Calle San Martin 456', 944332211, 'AutoRental.lima@AR.com', 012345678, 'Lima'),
 (100, 'Jr. Huallaga 789', 955443322, 'AutoRental.lima@AR.com', 123456789, 'Lima');
 
-INSERT INTO empleado (id, cedula, nombre, apellido, celular, ciudad_residencia, correo, direccion, id_sucursal) 
-VALUES
+
+INSERT INTO empleado (id, cedula, nombre, apellido, celular, ciudad_residencia, correo, direccion, id_sucursal) VALUES
 (1, 10203040, 'Juan Carlos', 'Gonzales Perez', 311234567, 'Lima', 'JuanCarlos@gmail.com', 'Av. La Marina 123', 1),
 (2, 20304050, 'Maria', 'Rodriguez Sanchez', 322345678, 'Arequipa', 'MariaRodriguez@gmail.com', 'Jr. Huallaga 456', 2),
 (3, 30405060, 'Luis', 'Garcia Martinez', 333456789, 'Trujillo', 'LuisGarcia@gmail.com', 'Calle San Martin 789', 3),
@@ -282,30 +381,276 @@ VALUES
 (100, 50607080, 'Ana', 'Garcia Martinez', 134012345, 'Lima', 'AnaGarcia@gmail.com', 'Av. Arequipa 234', 100);
 
 
+insert into vehiculo (id, tipo, referencia, modelo, placa, capacidad, sunroof, puertas, color, motor) values
+(1, 'Camioneta', 123, 2022, 123456, 5, 'No', 4, 'Negro', 'Diesel'),
+(2, 'Automovil', 456, 2023, 654321, 4, 'Si', 4, 'Rojo', 'Gasolina'),
+(3, 'SUV', 789, 2021, 987654, 7, 'No', 5, 'Blanco', 'Híbrido'),
+(4, 'Camioneta', 234, 2022, 456789, 5, 'Si', 4, 'Gris', 'Diesel'),
+(5, 'Automovil', 567, 2024, 987654, 4, 'Si', 4, 'Azul', 'Gasolina'),
+(6, 'SUV', 890, 2023, 345678, 7, 'No', 5, 'Verde', 'Eléctrico'),
+(7, 'Camioneta', 345, 2022, 678912, 5, 'No', 4, 'Plateado', 'Diesel'),
+(8, 'Automovil', 678, 2021, 891234, 4, 'Si', 4, 'Blanco', 'Gasolina'),
+(9, 'SUV', 901, 2023, 567891, 7, 'Si', 5, 'Negro', 'Híbrido'),
+(10, 'Camioneta', 456, 2024, 123789, 5, 'No', 4, 'Rojo', 'Diesel'),
+(11, 'Automovil', 789, 2022, 456123, 4, 'No', 4, 'Gris', 'Gasolina'),
+(12, 'SUV', 234, 2021, 789456, 7, 'Si', 5, 'Azul', 'Eléctrico'),
+(13, 'Camioneta', 567, 2023, 234567, 5, 'No', 4, 'Verde', 'Diesel'),
+(14, 'Automovil', 890, 2024, 567890, 4, 'Si', 4, 'Plateado', 'Gasolina'),
+(15, 'SUV', 123, 2022, 891234, 7, 'Si', 5, 'Blanco', 'Híbrido'),
+(16, 'Camioneta', 678, 2021, 123456, 5, 'No', 4, 'Negro', 'Diesel'),
+(17, 'Automovil', 901, 2023, 654321, 4, 'Si', 4, 'Rojo', 'Gasolina'),
+(18, 'SUV', 234, 2022, 987654, 7, 'No', 5, 'Gris', 'Eléctrico'),
+(19, 'Camioneta', 789, 2024, 456789, 5, 'Si', 4, 'Azul', 'Diesel'),
+(20, 'Automovil', 345, 2021, 987654, 4, 'Si', 4, 'Verde', 'Gasolina'),
+(21, 'SUV', 456, 2023, 678912, 7, 'No', 5, 'Plateado', 'Híbrido'),
+(22, 'Camioneta', 890, 2022, 891234, 5, 'No', 4, 'Blanco', 'Diesel'),
+(23, 'Automovil', 123, 2021, 123789, 4, 'Si', 4, 'Negro', 'Gasolina'),
+(24, 'SUV', 567, 2023, 456123, 7, 'Si', 5, 'Rojo', 'Eléctrico'),
+(25, 'Camioneta', 234, 2024, 789456, 5, 'No', 4, 'Gris', 'Diesel'),
+(26, 'Automovil', 789, 2022, 567890, 4, 'Si', 4, 'Azul', 'Gasolina'),
+(27, 'SUV', 890, 2021, 891234, 7, 'No', 5, 'Verde', 'Híbrido'),
+(28, 'Camioneta', 456, 2023, 234567, 5, 'Si', 4, 'Plateado', 'Diesel'),
+(29, 'Automovil', 901, 2024, 567890, 4, 'No', 4, 'Blanco', 'Gasolina'),
+(30, 'SUV', 123, 2022, 891234, 7, 'Si', 5, 'Negro', 'Eléctrico'),
+(31, 'Camioneta', 678, 2021, 123456, 5, 'No', 4, 'Rojo', 'Diesel'),
+(32, 'Automovil', 901, 2023, 654321, 4, 'Si', 4, 'Gris', 'Gasolina'),
+(33, 'SUV', 234, 2022, 987654, 7, 'No', 5, 'Azul', 'Eléctrico'),
+(34, 'Camioneta', 789, 2024, 456789, 5, 'Si', 4, 'Verde', 'Diesel'),
+(35, 'Automovil', 345, 2021, 987654, 4, 'Si', 4, 'Plateado', 'Gasolina'),
+(36, 'SUV', 456, 2023, 678912, 7, 'No', 5, 'Blanco', 'Híbrido'),
+(37, 'Camioneta', 890, 2022, 891234, 5, 'No', 4, 'Negro', 'Diesel'),
+(38, 'Automovil', 123, 2021, 123789, 4, 'Si', 4, 'Rojo', 'Gasolina'),
+(39, 'SUV', 567, 2023, 456123, 7, 'Si', 5, 'Gris', 'Eléctrico'),
+(40, 'Camioneta', 234, 2024, 789456, 5, 'No', 4, 'Azul', 'Diesel'),
+(41, 'Automovil', 789, 2022, 567890, 4, 'Si', 4, 'Verde', 'Gasolina'),
+(42, 'SUV', 890, 2021, 891234, 7, 'No', 5, 'Plateado', 'Híbrido'),
+(43, 'Camioneta', 456, 2023, 234567, 5, 'Si', 4, 'Blanco', 'Diesel'),
+(44, 'Automovil', 901, 2024, 567890, 4, 'No', 4, 'Negro', 'Gasolina'),
+(45, 'SUV', 123, 2022, 891234, 7, 'Si', 5, 'Rojo', 'Eléctrico'),
+(46, 'Camioneta', 678, 2021, 123456, 5, 'No', 4, 'Gris', 'Diesel'),
+(47, 'Automovil', 901, 2023, 654321, 4, 'Si', 4, 'Azul', 'Gasolina'),
+(48, 'SUV', 234, 2022, 987654, 7, 'No', 5, 'Verde', 'Eléctrico'),
+(49, 'Camioneta', 789, 2024, 456789, 5, 'Si', 4, 'Plateado', 'Diesel'),
+(50, 'Automovil', 345, 2021, 987654, 4, 'Si', 4, 'Blanco', 'Gasolina'),
+(51, 'SUV', 456, 2023, 678912, 7, 'No', 5, 'Negro', 'Híbrido'),
+(52, 'Camioneta', 890, 2022, 891234, 5, 'No', 4, 'Rojo', 'Diesel'),
+(53, 'Automovil', 123, 2021, 123789, 4, 'Si', 4, 'Gris', 'Gasolina'),
+(54, 'SUV', 567, 2023, 456123, 7, 'Si', 5, 'Azul', 'Eléctrico'),
+(55, 'Camioneta', 234, 2024, 789456, 5, 'No', 4, 'Verde', 'Diesel'),
+(56, 'Automovil', 789, 2022, 567890, 4, 'Si', 4, 'Plateado', 'Gasolina'),
+(57, 'SUV', 890, 2021, 891234, 7, 'No', 5, 'Blanco', 'Híbrido'),
+(58, 'Camioneta', 456, 2023, 234567, 5, 'Si', 4, 'Negro', 'Diesel'),
+(59, 'Automovil', 901, 2024, 567890, 4, 'No', 4, 'Rojo', 'Gasolina'),
+(60, 'SUV', 123, 2022, 891234, 7, 'Si', 5, 'Gris', 'Eléctrico'),
+(61, 'Camioneta', 678, 2021, 123456, 5, 'No', 4, 'Azul', 'Diesel'),
+(62, 'Automovil', 901, 2023, 654321, 4, 'Si', 4, 'Verde', 'Gasolina'),
+(63, 'SUV', 234, 2022, 987654, 7, 'No', 5, 'Plateado', 'Eléctrico'),
+(64, 'Camioneta', 789, 2024, 456789, 5, 'Si', 4, 'Blanco', 'Diesel'),
+(65, 'Automovil', 345, 2021, 987654, 4, 'Si', 4, 'Negro', 'Gasolina'),
+(66, 'SUV', 456, 2023, 678912, 7, 'No', 5, 'Rojo', 'Híbrido'),
+(67, 'Camioneta', 890, 2022, 891234, 5, 'No', 4, 'Gris', 'Diesel'),
+(68, 'Automovil', 123, 2021, 123789, 4, 'Si', 4, 'Azul', 'Gasolina'),
+(69, 'SUV', 567, 2023, 456123, 7, 'Si', 5, 'Verde', 'Eléctrico'),
+(70, 'Camioneta', 234, 2024, 789456, 5, 'No', 4, 'Plateado', 'Diesel'),
+(71, 'Automovil', 789, 2022, 567890, 4, 'Si', 4, 'Blanco', 'Gasolina'),
+(72, 'SUV', 890, 2021, 891234, 7, 'No', 5, 'Negro', 'Híbrido'),
+(73, 'Camioneta', 456, 2023, 234567, 5, 'Si', 4, 'Rojo', 'Diesel'),
+(74, 'Automovil', 901, 2024, 567890, 4, 'No', 4, 'Gris', 'Gasolina'),
+(75, 'SUV', 123, 2022, 891234, 7, 'Si', 5, 'Azul', 'Eléctrico'),
+(76, 'Camioneta', 678, 2021, 123456, 5, 'No', 4, 'Verde', 'Diesel'),
+(77, 'Automovil', 901, 2023, 654321, 4, 'Si', 4, 'Plateado', 'Gasolina'),
+(78, 'SUV', 234, 2022, 987654, 7, 'No', 5, 'Blanco', 'Híbrido'),
+(79, 'Camioneta', 789, 2024, 456789, 5, 'Si', 4, 'Negro', 'Diesel'),
+(80, 'Automovil', 345, 2021, 987654, 4, 'Si', 4, 'Rojo', 'Gasolina'),
+(81, 'SUV', 456, 2023, 678912, 7, 'No', 5, 'Gris', 'Eléctrico'),
+(82, 'Camioneta', 890, 2022, 891234, 5, 'No', 4, 'Azul', 'Diesel'),
+(83, 'Automovil', 123, 2021, 123789, 4, 'Si', 4, 'Verde', 'Gasolina'),
+(84, 'SUV', 567, 2023, 456123, 7, 'Si', 5, 'Plateado', 'Eléctrico'),
+(85, 'Camioneta', 234, 2024, 789456, 5, 'No', 4, 'Blanco', 'Diesel'),
+(86, 'Automovil', 789, 2022, 567890, 4, 'Si', 4, 'Negro', 'Gasolina'),
+(87, 'SUV', 890, 2021, 891234, 7, 'No', 5, 'Rojo', 'Híbrido'),
+(88, 'Camioneta', 456, 2023, 234567, 5, 'Si', 4, 'Gris', 'Diesel'),
+(89, 'Automovil', 901, 2024, 567890, 4, 'No', 4, 'Azul', 'Gasolina'),
+(90, 'SUV', 123, 2022, 891234, 7, 'Si', 5, 'Verde', 'Eléctrico'),
+(91, 'Camioneta', 678, 2021, 123456, 5, 'No', 4, 'Plateado', 'Diesel'),
+(92, 'Automovil', 901, 2023, 654321, 4, 'Si', 4, 'Blanco', 'Gasolina'),
+(93, 'SUV', 234, 2022, 987654, 7, 'No', 5, 'Negro', 'Híbrido'),
+(94, 'Camioneta', 789, 2024, 456789, 5, 'Si', 4, 'Rojo', 'Diesel'),
+(95, 'Automovil', 345, 2021, 987654, 4, 'Si', 4, 'Gris', 'Gasolina'),
+(96, 'SUV', 456, 2023, 678912, 7, 'No', 5, 'Azul', 'Eléctrico'),
+(97, 'Camioneta', 890, 2022, 891234, 5, 'No', 4, 'Verde', 'Diesel'),
+(98, 'Automovil', 123, 2021, 123789, 4, 'Si', 4, 'Plateado', 'Gasolina'),
+(99, 'SUV', 567, 2023, 456123, 7, 'Si', 5, 'Blanco', 'Eléctrico'),
+(100, 'Camioneta', 234, 2024, 789456, 5, 'No', 4, 'Negro', 'Diesel');
 
--- Consulta de disponibilidad de vehículos para alquiler por tipo de vehículo, rango de
--- precios de alquiler y fechas de disponibilidad.
 
-/* create table empleado(
-	id int primary key auto_increment not null,
-    cedula int(10) not null,
-    nombre varchar(35) not null,
-    apellido varchar(35) not null,
-    celular int(10) not null,
-    ciudad_residencia varchar(30) not null,
-    correo varchar(30) not null,
-    direccion varchar(20) not null,
-    id_sucursal int not null,
-    foreign key(id_sucursal) references sucursal(id)
-);
+insert into alquiler (id, idSucursal_salida, idSucursal_llegada, idEmpleado, idVehiculo, idCliente, valor_semana, valor_dia, fecha_salida, esperada_llegada, fecha_llegada, valor_cotizado, descuento, valor_pagado) values
+(1, 1, 2, 3, 1, 1, 6556, 323, '2022-06-02', '2022-07-01', '2022-06-20', 822, 23, 8500),
+(2, 2, 3, 4, 2, 2, 5600, 280, '2022-06-03', '2022-07-02', '2022-06-21', 800, 20, 7800),
+(3, 3, 4, 5, 3, 3, 7200, 360, '2022-06-04', '2022-07-03', '2022-06-22', 900, 25, 8500),
+(4, 4, 5, 6, 4, 4, 6100, 305, '2022-06-05', '2022-07-04', '2022-06-23', 850, 22, 8000),
+(5, 5, 6, 7, 5, 5, 6800, 340, '2022-06-06', '2022-07-05', '2022-06-24', 880, 24, 8200),
+(6, 6, 7, 8, 6, 6, 5900, 295, '2022-06-07', '2022-07-06', '2022-06-25', 820, 23, 7800),
+(7, 7, 8, 9, 7, 7, 7500, 375, '2022-06-08', '2022-07-07', '2022-06-26', 900, 25, 8700),
+(8, 8, 9, 10, 8, 8, 6400, 320, '2022-06-09', '2022-07-08', '2022-06-27', 860, 23, 8100),
+(9, 9, 10, 11, 9, 9, 7100, 355, '2022-06-10', '2022-07-09', '2022-06-28', 890, 24, 8300),
+(10, 10, 11, 12, 10, 10, 6000, 300, '2022-06-11', '2022-07-10', '2022-06-29', 830, 22, 7900),
+(11, 11, 12, 13, 11, 11, 7700, 385, '2022-06-12', '2022-07-11', '2022-06-30', 920, 26, 8800),
+(12, 12, 13, 14, 12, 12, 6500, 325, '2022-06-13', '2022-07-12', '2022-07-01', 870, 24, 8200),
+(13, 13, 14, 15, 13, 13, 7200, 360, '2022-06-14', '2022-07-13', '2022-07-02', 900, 25, 8500),
+(14, 14, 15, 16, 14, 14, 5900, 295, '2022-06-15', '2022-07-14', '2022-07-03', 820, 23, 7800),
+(15, 15, 16, 17, 15, 15, 6800, 340, '2022-06-16', '2022-07-15', '2022-07-04', 880, 24, 8200),
+(16, 16, 17, 18, 16, 16, 5600, 280, '2022-06-17', '2022-07-16', '2022-07-05', 800, 20, 7800),
+(17, 17, 18, 19, 17, 17, 7100, 355, '2022-06-18', '2022-07-17', '2022-07-06', 890, 24, 8300),
+(18, 18, 19, 20, 18, 18, 6400, 320, '2022-06-19', '2022-07-18', '2022-07-07', 860, 23, 8100),
+(19, 19, 20, 21, 19, 19, 7500, 375, '2022-06-20', '2022-07-19', '2022-07-08', 900, 25, 8700),
+(20, 20, 21, 22, 20, 20, 6000, 300, '2022-06-21', '2022-07-20', '2022-07-09', 830, 22, 7900),
+(21, 21, 22, 23, 21, 21, 7700, 385, '2022-06-22', '2022-07-21', '2022-07-10', 920, 26, 8800),
+(22, 22, 23, 24, 22, 22, 6500, 325, '2022-06-23', '2022-07-22', '2022-07-11', 870, 24, 8200),
+(23, 23, 24, 25, 23, 23, 7200, 360, '2022-06-24', '2022-07-23', '2022-07-12', 900, 25, 8500),
+(24, 24, 25, 26, 24, 24, 5900, 295, '2022-06-25', '2022-07-24', '2022-07-13', 820, 23, 7800),
+(25, 25, 26, 27, 25, 25, 6800, 340, '2022-06-26', '2022-07-25', '2022-07-14', 880, 24, 8200),
+(26, 26, 27, 28, 26, 26, 5600, 280, '2022-06-27', '2022-07-26', '2022-07-15', 800, 20, 7800),
+(27, 27, 28, 29, 27, 27, 7100, 355, '2022-06-28', '2022-07-27', '2022-07-16', 890, 24, 8300),
+(28, 28, 29, 30, 28, 28, 6400, 320, '2022-06-29', '2022-07-28', '2022-07-17', 860, 23, 8100),
+(29, 29, 30, 31, 29, 29, 7500, 375, '2022-06-30', '2022-07-29', '2022-07-18', 900, 25, 8700),
+(30, 30, 31, 32, 30, 30, 6000, 300, '2022-07-01', '2022-07-30', '2022-07-19', 830, 22, 7900),
+(31, 31, 32, 33, 31, 31, 7700, 385, '2022-07-02', '2022-07-31', '2022-07-20', 920, 26, 8800),
+(32, 32, 33, 34, 32, 32, 6500, 325, '2022-07-03', '2022-08-01', '2022-07-21', 870, 24, 8200),
+(33, 33, 34, 35, 33, 33, 7200, 360, '2022-07-04', '2022-08-02', '2022-07-22', 900, 25, 8500),
+(34, 34, 35, 36, 34, 34, 5900, 295, '2022-07-05', '2022-08-03', '2022-07-23', 820, 23, 7800),
+(35, 35, 36, 37, 35, 35, 6800, 340, '2022-07-06', '2022-08-04', '2022-07-24', 880, 24, 8200),
+(36, 36, 37, 38, 36, 36, 5600, 280, '2022-07-07', '2022-08-05', '2022-07-25', 800, 20, 7800),
+(37, 37, 38, 39, 37, 37, 7100, 355, '2022-07-08', '2022-08-06', '2022-07-26', 890, 24, 8300),
+(38, 38, 39, 40, 38, 38, 6400, 320, '2022-07-09', '2022-08-07', '2022-07-27', 860, 23, 8100),
+(39, 39, 40, 41, 39, 39, 7500, 375, '2022-07-10', '2022-08-08', '2022-07-28', 900, 25, 8700),
+(40, 40, 41, 42, 40, 40, 6000, 300, '2022-07-11', '2022-08-09', '2022-07-29', 830, 22, 7900),
+(41, 41, 42, 43, 41, 41, 7700, 385, '2022-07-12', '2022-08-10', '2022-07-30', 920, 26, 8800),
+(42, 42, 43, 44, 42, 42, 6500, 325, '2022-07-13', '2022-08-11', '2022-07-31', 870, 24, 8200),
+(43, 43, 44, 45, 43, 43, 7200, 360, '2022-07-14', '2022-08-12', '2022-08-01', 900, 25, 8500),
+(44, 44, 45, 46, 44, 44, 5900, 295, '2022-07-15', '2022-08-13', '2022-08-02', 820, 23, 7800),
+(45, 45, 46, 47, 45, 45, 6800, 340, '2022-07-16', '2022-08-14', '2022-08-03', 880, 24, 8200),
+(46, 46, 47, 48, 46, 46, 5600, 280, '2022-07-17', '2022-08-15', '2022-08-04', 800, 20, 7800),
+(47, 47, 48, 49, 47, 47, 7100, 355, '2022-07-18', '2022-08-16', '2022-08-05', 890, 24, 8300),
+(48, 48, 49, 50, 48, 48, 6400, 320, '2022-07-19', '2022-08-17', '2022-08-06', 860, 23, 8100),
+(49, 49, 50, 51, 49, 49, 7500, 375, '2022-07-20', '2022-08-18', '2022-08-07', 900, 25, 8700),
+(50, 50, 51, 52, 50, 50, 6000, 300, '2022-07-21', '2022-08-19', '2022-08-08', 830, 22, 7900),
+(51, 51, 52, 53, 51, 51, 7700, 385, '2022-07-22', '2022-08-20', '2022-08-09', 920, 26, 8800),
+(52, 52, 53, 54, 52, 52, 6500, 325, '2022-07-23', '2022-08-21', '2022-08-10', 870, 24, 8200),
+(53, 53, 54, 55, 53, 53, 7200, 360, '2022-07-24', '2022-08-22', '2022-08-11', 900, 25, 8500),
+(54, 54, 55, 56, 54, 54, 5900, 295, '2022-07-25', '2022-08-23', '2022-08-12', 820, 23, 7800),
+(55, 55, 56, 57, 55, 55, 6800, 340, '2022-07-26', '2022-08-24', '2022-08-13', 880, 24, 8200),
+(56, 56, 57, 58, 56, 56, 5600, 280, '2022-07-27', '2022-08-25', '2022-08-14', 800, 20, 7800),
+(57, 57, 58, 59, 57, 57, 7100, 355, '2022-07-28', '2022-08-26', '2022-08-15', 890, 24, 8300),
+(58, 58, 59, 60, 58, 58, 6400, 320, '2022-07-29', '2022-08-27', '2022-08-16', 860, 23, 8100),
+(59, 59, 60, 61, 59, 59, 7500, 375, '2022-07-30', '2022-08-28', '2022-08-17', 900, 25, 8700),
+(60, 60, 61, 62, 60, 60, 6000, 300, '2022-07-31', '2022-08-29', '2022-08-18', 830, 22, 7900),
+(61, 61, 62, 63, 61, 61, 7700, 385, '2022-08-01', '2022-08-30', '2022-08-19', 920, 26, 8800),
+(62, 62, 63, 64, 62, 62, 6500, 325, '2022-08-02', '2022-08-31', '2022-08-20', 870, 24, 8200),
+(63, 63, 64, 65, 63, 63, 7200, 360, '2022-08-03', '2022-09-01', '2022-08-21', 900, 25, 8500),
+(64, 64, 65, 66, 64, 64, 5900, 295, '2022-08-04', '2022-09-02', '2022-08-22', 820, 23, 7800),
+(65, 65, 66, 67, 65, 65, 6800, 340, '2022-08-05', '2022-09-03', '2022-08-23', 880, 24, 8200),
+(66, 66, 67, 68, 66, 66, 5600, 280, '2022-08-06', '2022-09-04', '2022-08-24', 800, 20, 7800),
+(67, 67, 68, 69, 67, 67, 7100, 355, '2022-08-07', '2022-09-05', '2022-08-25', 890, 24, 8300),
+(68, 68, 69, 70, 68, 68, 6400, 320, '2022-08-08', '2022-09-06', '2022-08-26', 860, 23, 8100),
+(69, 69, 70, 71, 69, 69, 7500, 375, '2022-08-09', '2022-09-07', '2022-08-27', 900, 25, 8700),
+(70, 70, 71, 72, 70, 70, 6000, 300, '2022-08-10', '2022-09-08', '2022-08-28', 830, 22, 7900),
+(71, 71, 72, 73, 71, 71, 7700, 385, '2022-08-11', '2022-09-09', '2022-08-29', 920, 26, 8800),
+(72, 72, 73, 74, 72, 72, 6500, 325, '2022-08-12', '2022-09-10', '2022-08-30', 870, 24, 8200),
+(73, 73, 74, 75, 73, 73, 7200, 360, '2022-08-13', '2022-09-11', '2022-08-31', 900, 25, 8500),
+(74, 74, 75, 76, 74, 74, 5900, 295, '2022-08-14', '2022-09-12', '2022-09-01', 820, 23, 7800),
+(75, 75, 76, 77, 75, 75, 6800, 340, '2022-08-15', '2022-09-13', '2022-09-02', 880, 24, 8200),
+(76, 76, 77, 78, 76, 76, 5600, 280, '2022-08-16', '2022-09-14', '2022-09-03', 800, 20, 7800),
+(77, 77, 78, 79, 77, 77, 7100, 355, '2022-08-17', '2022-09-15', '2022-09-04', 890, 24, 8300),
+(78, 78, 79, 80, 78, 78, 6400, 320, '2022-08-18', '2022-09-16', '2022-09-05', 860, 23, 8100),
+(79, 79, 80, 81, 79, 79, 7500, 375, '2022-08-19', '2022-09-17', '2022-09-06', 900, 25, 8700),
+(80, 80, 81, 82, 80, 80, 6000, 300, '2022-08-20', '2022-09-18', '2022-09-07', 830, 22, 7900),
+(81, 81, 82, 83, 81, 81, 7700, 385, '2022-08-21', '2022-09-19', '2022-09-08', 920, 26, 8800),
+(82, 82, 83, 84, 82, 82, 6500, 325, '2022-08-22', '2022-09-20', '2022-09-09', 870, 24, 8200),
+(83, 83, 84, 85, 83, 83, 7200, 360, '2022-08-23', '2022-09-21', '2022-09-10', 900, 25, 8500),
+(84, 84, 85, 86, 84, 84, 5900, 295, '2022-08-24', '2022-09-22', '2022-09-11', 820, 23, 7800),
+(85, 85, 86, 87, 85, 85, 6800, 340, '2022-08-25', '2022-09-23', '2022-09-12', 880, 24, 8200),
+(86, 86, 87, 88, 86, 86, 5600, 280, '2022-08-26', '2022-09-24', '2022-09-13', 800, 20, 7800),
+(87, 87, 88, 89, 87, 87, 7100, 355, '2022-08-27', '2022-09-25', '2022-09-14', 890, 24, 8300),
+(88, 88, 89, 90, 88, 88, 6400, 320, '2022-08-28', '2022-09-26', '2022-09-15', 860, 23, 8100),
+(89, 89, 90, 91, 89, 89, 7500, 375, '2022-08-29', '2022-09-27', '2022-09-16', 900, 25, 8700),
+(90, 90, 91, 92, 90, 90, 6000, 300, '2022-08-30', '2022-09-28', '2022-09-17', 830, 22, 7900),
+(91, 91, 92, 93, 91, 91, 7700, 385, '2022-08-31', '2022-09-29', '2022-09-18', 920, 26, 8800),
+(92, 92, 93, 94, 92, 92, 6500, 325, '2022-09-01', '2022-09-30', '2022-09-19', 870, 24, 8200),
+(93, 93, 94, 95, 93, 93, 7200, 360, '2022-09-02', '2022-10-01', '2022-09-20', 900, 25, 8500),
+(94, 94, 95, 96, 94, 94, 5900, 295, '2022-09-03', '2022-10-02', '2022-09-21', 820, 23, 7800),
+(95, 95, 96, 97, 95, 95, 6800, 340, '2022-09-04', '2022-10-03', '2022-09-22', 880, 24, 8200),
+(96, 96, 97, 98, 96, 96, 5600, 280, '2022-09-05', '2022-10-04', '2022-09-23', 800, 20, 7800),
+(97, 97, 98, 99, 97, 97, 7100, 355, '2022-09-06', '2022-10-05', '2022-09-24', 890, 24, 8300),
+(98, 98, 99, 100, 98, 98, 6400, 320, '2022-09-07', '2022-10-06', '2022-09-25', 860, 23, 8100),
+(99, 99, 100, 1, 99, 99, 7500, 375, '2022-09-08', '2022-10-07', '2022-09-26', 900, 25, 8700),
+(100, 100, 1, 2, 100, 100, 6000, 300, '2022-09-09', '2022-10-08', '2022-09-27', 830, 22, 7900);
 
-Dame 100 inseriones EXACTAS
-En id_sucursal tiene que estar el id de la tabla sucursal.
-Dame SOLO las inserciones.
-nombre y apellidos si pueden repetirse por separado pero no juntos.
-Que en celular  se vea real el numero.
-El correo diga (nombre ó apellido ó iniciales)@AR.com.
-Estos datos pueden repetirse menos cedula, correo, celular y la direccion.
-Ciudad residencia y id_sucursal deben ser del mismo*/
+
+-- Clientes:
+create user 'cliente'@'%' identified by 'ClienteClave';
+-- Consulta de disponibilidad de vehículos 
+delimiter //
+create view vehiculo_libre as
+    select v.*
+    from vehiculo v
+    left join alquiler a on v.id = a.idVehiculo
+    where a.idVehiculo is null;
+delimiter ;
+grant select on AutoRental.vehiculo_libre to 'cliente'@'%';
+
+
+grant select on vehiculo to 'cliente'@'%';
+
+-- para alquiler por tipo de vehículo, rango de precios de alquiler.
+delimiter //
+create procedure buscador_tipo (in clave varchar)
+begin
+    select * 
+    from vehiculo
+    where tipo like concat('%',clave,'%')
+end //
+delimiter ;
+grant select on AutoRental.buscador_tipo to 'cliente'@'%';
+
+delimiter //
+create procedure buscador_num (in primer int,in segun int)
+begin
+    select * 
+    from alquiler
+    where valor_dia between primer and segun
+    or valor_semana between primer and segun;
+end //
+delimiter ;
+grant select on AutoRental.buscador_tipo to 'cliente'@'%'; 
+
+
+-- Historial alquiler, el id del cliente es 1 por defecto
+create view cliente_alquiler as
+select *
+from alquiler
+when idCliente = 1;
+
+grant select on AutoRental.cliente_alquiler to 'cliente'@'%';
+
+-- Alquiler de vehículos.
+grant insert on AutoRental.cliente_alquiler to 'cliente'@'%';
+
+
+-- Empleados:
+create user 'empleado'@'%' identified by 'EmpleadoClave';
+
+-- Muestra de sucursales, vehículos y empleados
+grant select * on AutoRental.sucursal to 'empleado'@'%';
+grant select * on AutoRental.vehiculo to 'empleado'@'%';
+grant select * on AutoRental.empleado to 'empleado'@'%';
+
+
+-- Alquiler de vehículos.
+grant update, insert,delete on AutoRental.cliente_alquiler to 'empleado'@'%';
+
+flush privileges;
+show grants for 'cliente'@'%';
+show grants for 'empleado'@'%';
 
 -- Desarrollado por Catalina Mulford / ID 1.097.490.150
