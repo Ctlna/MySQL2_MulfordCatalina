@@ -12,6 +12,8 @@ create user 'cliente'@'%' identified by 'ClienteClave';
 -- Consulta de disponibilidad de vehículos 
 delimiter //
 create procedure vehiculo_libre 
+before update on alquiler
+for each row
 begin
     select v.*
     from vehiculo v
@@ -21,17 +23,8 @@ end ;
 delimiter ;
 
 grant select on AutoRental.vehiculo_libre to 'cliente'@'%';
-/*
-delimiter //
-create trigger vehiculo_libre as
-    select v.*
-    from vehiculo v
-    left join alquiler a on v.id = a.idVehiculo
-    where a.idVehiculo is null;
-delimiter ;
-*/
 
-
+-- Le permite al Cliente ver que carros hay en general
 grant select on vehiculo to 'cliente'@'%';
 
 -- para alquiler por tipo de vehículo, rango de precios de alquiler.
@@ -79,6 +72,55 @@ grant select * on AutoRental.sucursal to 'empleado'@'%';
 grant select * on AutoRental.vehiculo to 'empleado'@'%';
 grant select * on AutoRental.empleado to 'empleado'@'%';
 delimiter ;
+
+-- Carros que estan en alquiler
+delimiter //
+create event alquilando
+on schedule every 1 day
+do
+begin
+    select v.id, v.tipo, v.placa
+    from vehiculo v
+    join alquiler a on a.idVehiculo = v.id
+    where a.fecha_llegada > curdate() or a.fecha_llegada is null ;
+end //
+delimiter ;
+grant select on AutoRental.alquilando to 'empleado'@'%';
+
+-- Cobro
+delimiter //
+create trigger cobro
+before insert on alquiler
+for each row
+begin
+    declare general int;
+    declare semanas int;
+    declare dia int;
+    set general = DATEDIFF(NEW.esperada_llegada, NEW.fecha_salida);
+    set semanas = floor(general/7);
+    set dia = floor(general/7);
+    set NEW.valor_cotizado = (semanas * NEW.valor_semana) + (dias * NEW.valor_dia);
+end //
+delimiter ; 
+grant select on AutoRental.cobro to 'empleado'@'%';
+
+-- Días extra
+delimiter //
+create trigger dia_extra
+after update on alquiler
+for each row
+begin
+    declare dias_demas int;
+    declare extra int;
+
+    if NEW.fecha_llegada > NEW.esperada_llegada then
+         set dias_demas = DATEDIFF(NEW.fecha_llegada, NEW.esperada_llegada);
+         set cargo_adicional = dias_adicionales * NEW.valor_dia * 1.08;
+         set NEW.valor_pagado = NEW.valor_pagado + cargo_adicional;
+       end if;
+end //
+delimiter ; 
+grant select on AutoRental.dia_extra to 'empleado'@'%';
 
 -- Alquiler de vehículos.
 grant update, insert,delete on AutoRental.cliente_alquiler to 'empleado'@'%';

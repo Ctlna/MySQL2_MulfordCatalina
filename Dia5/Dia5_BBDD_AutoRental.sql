@@ -60,7 +60,7 @@ create table alquiler(
     fecha_llegada date not null,
     valor_cotizado int not null,
     descuento int not null,
-    valor_pagado int not null,
+    valor_pagado int,
     foreign key(idSucursal_salida) references sucursal (id),
     foreign key(idSucursal_llegada) references sucursal (id),
     foreign key(idEmpleado) references empleado (id),
