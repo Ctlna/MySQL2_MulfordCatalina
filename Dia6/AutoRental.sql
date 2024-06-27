@@ -6,12 +6,22 @@
 create database AutoRental;
 use AutoRental;
 
+-- Gerente
+create user 'gerente'@'%' identified by 'soloTu';
+grant update, insert on *.* to 'gerente'@'%';
+show grants for 'gerente'@'%';
+
+
 -- Clientes:
-create user 'cliente'@'%' identified by 'ClienteClave';
+create user 'cliente'@'%' identified by 'clienteclave';
+drop user  'cliente'@'%' ;
+flush privileges;
+grant select on vehiculos to 'cliente'@'%';
+
 
 -- Consulta de disponibilidad de vehículos 
 delimiter //
-create procedure vehiculo_libre 
+create trigger vehiculo_libre 
 before update on alquiler
 for each row
 begin
@@ -21,13 +31,26 @@ begin
     where a.idVehiculo is null;
 end ;
 delimiter ;
-
-grant select on AutoRental.vehiculo_libre to 'cliente'@'%';
+update alquiler set valor_pagado = null where id = 2;
+select * from alquiler;
 
 -- Le permite al Cliente ver que carros hay en general
-grant select on vehiculo to 'cliente'@'%';
+delimiter //
+create trigger ver
+before insert on alquiler
+for each row 
+begin
+    select *
+    from vehiculos;
+end //
+delimiter ;
+insert into alquiler (id, idSucursal_salida, idSucursal_llegada, idEmpleado, idVehiculo, idCliente, valor_semana, valor_dia, fecha_salida, esperada_llegada, fecha_llegada, valor_cotizado, descuento, valor_pagado)
+values
+(101, 5, 2, 9, 3, 7, 105000, 24000, '2024-05-02', '2024-05-06', '2024-06-27', 822000, 20, null);
+select * from alquiler;
+grant select on ver to 'cliente'@'%';
 
--- para alquiler por tipo de vehículo, rango de precios de alquiler.
+# -- para alquiler por tipo de vehículo, rango de precios de alquiler.
 delimiter //
 create procedure buscador_tipo (in clave varchar)
 begin
@@ -51,12 +74,25 @@ grant select on AutoRental.buscador_tipo to 'cliente'@'%';
 
 
 -- Historial alquiler, el id del cliente es 1 por defecto
+create table if not exists historial(
+	id_histo int not null primary key auto_increment,
+    idAlquiler int,
+    idCliente int
+);
 delimiter //
-create view cliente_alquiler as
-	select *
-	from alquiler
-	when idCliente = 1;
+create view elHistorial as
+    select h.*
+	from historial h
+    join alquiler on h.id_histo = alquiler.id
+    join cliente on alquiler.idCliente = cliente.id
+	where idCliente = 2;
+end //
 delimiter ;
+insert into vehiculo (id, tipo, referencia, modelo, placa, capacidad, sunroof, puertas, color, motor) 
+values(101, 'Deportivo', 456, 2023, 654321, 4, 'Si', 4, 'Verde', 'Gasolina');
+select * from vehiculo;
+select * from historial;
+
 grant select on AutoRental.cliente_alquiler to 'cliente'@'%';
 
 -- Alquiler de vehículos.
