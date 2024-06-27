@@ -68,8 +68,6 @@ create table alquiler(
     foreign key(idCliente) references cliente (id)
 );
 
-select * from cliente where id=1;
-
 INSERT INTO cliente(id, cedula, nombre, apellido, celular, ciudad_residencia, correo, direccion) VALUES
 (100, 845321567, 'Juan', 'Perez', 31013456, 'Lima', 'juan.perez@gmail.com', 'Av. La Marina 123'),
 (2, 764213895, 'Maria', 'Lopez', 320234567, 'Arequipa', 'maria.lopez@gmail.com', 'Jr. Huallaga 456'),
@@ -481,7 +479,7 @@ insert into vehiculo (id, tipo, referencia, modelo, placa, capacidad, sunroof, p
 
 
 insert into alquiler (id, idSucursal_salida, idSucursal_llegada, idEmpleado, idVehiculo, idCliente, valor_semana, valor_dia, fecha_salida, esperada_llegada, fecha_llegada, valor_cotizado, descuento, valor_pagado) values
-(1, 1, 2, 3, 1, 1, 6556, 323, '2022-06-02', '2022-07-01', '2022-06-20', 822, 23, 8500),
+(1, 1, 2, 3, 1, 3, 6556, 323, '2022-06-02', '2022-07-01', '2022-06-20', 822, 23, 8500),
 (2, 2, 3, 4, 2, 2, 5600, 280, '2022-06-03', '2022-07-02', '2022-06-21', 800, 20, 7800),
 (3, 3, 4, 5, 3, 3, 7200, 360, '2022-06-04', '2022-07-03', '2022-06-22', 900, 25, 8500),
 (4, 4, 5, 6, 4, 4, 6100, 305, '2022-06-05', '2022-07-04', '2022-06-23', 850, 22, 8000),
