@@ -7,8 +7,8 @@ create database AutoRental;
 use AutoRental;
 
 -- Gerente
-create user 'gerente'@'%' identified by 'soloTu';
-grant update, insert on *.* to 'gerente'@'%';
+create user 'gerente'@'%' identified by 'gerenteClave';
+grant update, insert,delete on *.* to 'gerente'@'%';
 show grants for 'gerente'@'%';
 
 
@@ -36,19 +36,10 @@ select * from alquiler;
 
 -- Le permite al Cliente ver que carros hay en general
 delimiter //
-create trigger ver
-before insert on alquiler
-for each row 
-begin
-    select *
-    from vehiculos;
-end //
+create view cliente_alquiler as
+	select *
+	from vehiculo;
 delimiter ;
-insert into alquiler (id, idSucursal_salida, idSucursal_llegada, idEmpleado, idVehiculo, idCliente, valor_semana, valor_dia, fecha_salida, esperada_llegada, fecha_llegada, valor_cotizado, descuento, valor_pagado)
-values
-(101, 5, 2, 9, 3, 7, 105000, 24000, '2024-05-02', '2024-05-06', '2024-06-27', 822000, 20, null);
-select * from alquiler;
-grant select on ver to 'cliente'@'%';
 
 # -- para alquiler por tipo de vehículo, rango de precios de alquiler.
 delimiter //
@@ -59,8 +50,10 @@ begin
     where tipo like concat('%',clave,'%')
 end ;
 delimiter ;
+call buscador_tipo(SUV);
 grant select on AutoRental.buscador_tipo to 'cliente'@'%';
-
+select * from vehiculo;
+# -- para alquiler por rango de precios de alquiler.
 delimiter //
 create procedure buscador_num (in primer int,in segun int)
 begin
@@ -70,6 +63,7 @@ begin
     or valor_semana between primer and segun;
 end //
 delimiter ;
+call buscador_num(300,500);
 grant select on AutoRental.buscador_tipo to 'cliente'@'%'; 
 
 
@@ -86,6 +80,7 @@ create view elHistorial as
     join alquiler on h.id_histo = alquiler.id
     join cliente on alquiler.idCliente = cliente.id
 	where idCliente = 2;
+    insert into historial(id_histo,idAlquiler,idCliente)values (h.id,alquiler.id,cliente.id);
 end //
 delimiter ;
 insert into vehiculo (id, tipo, referencia, modelo, placa, capacidad, sunroof, puertas, color, motor) 
@@ -95,19 +90,59 @@ select * from historial;
 
 grant select on AutoRental.cliente_alquiler to 'cliente'@'%';
 
--- Alquiler de vehículos.
-grant insert on AutoRental.cliente_alquiler to 'cliente'@'%';
-
 
 -- Empleados:
 create user 'empleado'@'%' identified by 'EmpleadoClave';
+drop user  'empleado'@'%' ;
+flush privileges;
 
--- Muestra de sucursales, vehículos y empleados
+-- Historial de todo en alquiler
 delimiter //
-grant select * on AutoRental.sucursal to 'empleado'@'%';
+create trigger ver
+before insert on alquiler
+for each row 
+begin
+    select *
+    from vehiculos;
+end //
+delimiter ;
+insert into alquiler (id, idSucursal_salida, idSucursal_llegada, idEmpleado, idVehiculo, idCliente, valor_semana, valor_dia, fecha_salida, esperada_llegada, fecha_llegada, valor_cotizado, descuento, valor_pagado)
+values
+(101, 5, 2, 9, 3, 7, 105000, 24000, '2024-05-02', '2024-05-06', '2024-06-27', 822000, 20, null);
+select * from alquiler;
+
+Muestra de sucursales, vehículos y empleados
+delimiter //
+grant select on AutoRental.sucursales to 'empleado'@'%';
 grant select * on AutoRental.vehiculo to 'empleado'@'%';
 grant select * on AutoRental.empleado to 'empleado'@'%';
 delimiter ;
+
+# -- Muestra de sucursales
+delimiter //
+create procedure ver_sucursales as
+	select *
+	from sucursal;
+end ;
+delimiter ;
+call ver_sucursales;
+# -- Muestra de vehículos
+delimiter //
+create view ver_vehiculo as
+	select *
+	from vehiculo;
+    end ;
+delimiter ;
+call ver_vehiculo;
+# -- Muestra de empleados
+delimiter //
+create view ver_empleado as
+	select *
+	from empleado;
+    end ;
+delimiter ;
+call ver_empleado;
+
 
 -- Carros que estan en alquiler
 delimiter //
@@ -121,7 +156,7 @@ begin
     where a.fecha_llegada > curdate() or a.fecha_llegada is null ;
 end //
 delimiter ;
-grant select on AutoRental.alquilando to 'empleado'@'%';
+-- grant select on AutoRental.alquilando to 'empleado'@'%';
 
 -- Cobro
 delimiter //
